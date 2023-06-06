@@ -42,7 +42,7 @@ Eny_y   = ( abs(psf2otf([+1, -1], [h,w,d])) ).^2  ;
 Eny_z   = ( abs(psf2otf([+1, -1], [w,d,h])) ).^2  ;
 Eny_z   =  permute(Eny_z, [3, 1 2]);
 determ  =  Eny_x + Eny_y + Eny_z;
-mu1=10;
+mu1=0.01;
 for iter=1:maxIter
     preX       = X;
     %% - update A and B, C and X
@@ -71,7 +71,7 @@ for iter=1:maxIter
     M2         = M2 + mu1*(X-Z);
     %% - update Gamma
     Gamma      = Gamma+mu1*(diff_Z-F);
-%     mu1       = min(mu1 *1.5,1e6);
+ mu1       = min(mu1 *1.5,1e6);
     %% compute the error
     
     errList    = norm(X(:)-preX(:)) / normD;
