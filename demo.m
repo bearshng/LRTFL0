@@ -1,6 +1,6 @@
 msi_sz=size(noisy_msi);
-R=estimateR(reshape(noisy_msi, msi_sz(1)*msi_sz(2),msi_sz(3))','additive','off');
- p_subspace=max(p_subspace,3);
+[~,R]=estimateR(reshape(noisy_msi, msi_sz(1)*msi_sz(2),msi_sz(3))','additive','off');
+p_subspace=max(p_subspace,3);
 L=min(msi_sz(1),msi_sz(2));
 A=randn(msi_sz(1),L*p_subspace);
 B=randn(msi_sz(2),L*p_subspace);
